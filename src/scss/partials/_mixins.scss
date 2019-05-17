@@ -1,0 +1,34 @@
+@mixin clear {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin clear-list {
+  @include clear;
+  list-style: none;
+}
+
+//Media
+@mixin extra-large-screen {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin large-screen {
+  @media only screen and (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin medium-screen {
+  @media only screen and(max-width: 768px) {
+    @content
+  }
+}
+
+@mixin small-screen {
+  @media only screen and(max-width: 576px) {
+    @content
+  }
+}
