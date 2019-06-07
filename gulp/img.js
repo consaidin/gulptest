@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 
 gulp.task('img', function () {
-    return gulp.src('src/img/**/*.*')
+    return gulp.src('src/img/**/*.{jpg, svg, png}')
         .pipe(imagemin([
             imagemin.gifsicle({interlaced: true}),
             imagemin.jpegtran({progressive: true}),
