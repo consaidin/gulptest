@@ -4,12 +4,12 @@ const imageminJpegRecompress = require('imagemin-jpeg-recompress');
 const pngQuant = require('pngquant');
 
 gulp.task('img-copy', function () {
-    return gulp.src('src/img/**/*.{jpg, svg, png}')
+    return gulp.src('src/img/**/*.{jpg,png}')
         .pipe(gulp.dest('frontend/img'));
 });
 
 gulp.task('img', function () {
-    return gulp.src('frontend/img/**/*.{jpg, svg, png}')
+    return gulp.src('frontend/img/**/*.{jpg,svg,png}')
         .pipe(imagemin([
             imagemin.jpegtran({progressive: true}),
             imageminJpegRecompress({
