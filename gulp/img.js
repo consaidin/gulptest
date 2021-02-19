@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const imageminJpegRecompress = require('imagemin-jpeg-recompress');
 const pngQuant = require('pngquant');
+const cache = require('gulp-cache');
 
 gulp.task('img-copy', function () {
     return gulp.src('src/img/**/*.{jpg,png}')
@@ -10,7 +11,7 @@ gulp.task('img-copy', function () {
 
 gulp.task('img', function () {
     return gulp.src('frontend/img/**/*.{jpg,svg,png}')
-        .pipe(imagemin([
+        .pipe(cache(imagemin([
             imagemin.jpegtran({progressive: true}),
             imageminJpegRecompress({
                 loops: 5,
@@ -21,7 +22,7 @@ gulp.task('img', function () {
             imagemin.optipng({optimizationLevel: 3}),
             pngQuant({quality: '65-70', speed: 5}),
             imagemin.svgo()
-        ]))
+        ])))
         .pipe(gulp.dest('frontend/img'))
 });
 
